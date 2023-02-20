@@ -3,13 +3,15 @@
 type Options = Partial<Cypress.ClickOptions & {
   source: Cypress.ClickOptions
   target: Cypress.ClickOptions
-  delayAfterMouseDown: number
+  delayAfterDragStart: number
+  delayAfterDragOver: number
 }>
 
 type MoveOptions = Partial<Cypress.ClickOptions & {
   deltaX: number
   deltaY: number
-  delayAfterMouseDown: number
+  delayAfterDragStart: number
+  delayAfterDragOver: number
 }>
 
 declare namespace Cypress {

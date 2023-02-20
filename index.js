@@ -52,8 +52,7 @@ const DragSimulator = {
         eventConstructor: 'MouseEvent',
         ...this.options.source,
       })
-      .wait(this.options.source.delayAfterMouseDown)
-      .trigger('dragstart', { dataTransfer, eventConstructor: 'DragEvent', ...this.options.source })
+      .trigger('dragstart', { dataTransfer, eventConstructor: 'DragEvent', ...this.options.source }).wait(this.options.source.delayAfterDragStart)
   },
   drop(clientPosition = {}) {
     return this.target
@@ -106,7 +105,7 @@ const DragSimulator = {
           eventConstructor: 'PointerEvent',
         })
         .wait(this.DELAY_INTERVAL_MS)
-        .then(() => this.dragover(clientPosition))
+        .then(() => this.dragover(clientPosition)).wait(this.options.source.delayAfterDragOver)
     }
     if (!this.dropped) {
       console.error(`Exceeded maximum tries of: ${this.MAX_TRIES}, aborting`)
