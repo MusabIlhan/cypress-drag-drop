@@ -52,6 +52,7 @@ const DragSimulator = {
         eventConstructor: 'MouseEvent',
         ...this.options.source,
       })
+      .wait(this.options.source.delayAfterMouseDown)
       .trigger('dragstart', { dataTransfer, eventConstructor: 'DragEvent', ...this.options.source })
   },
   drop(clientPosition = {}) {
